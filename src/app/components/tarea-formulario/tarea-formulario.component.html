@@ -1,0 +1,50 @@
+<div class="contenedor">
+  <h1>{{ esEdicion ? '✏️ Editar tarea' : '➕ Nueva tarea' }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="formulario">
+    <div class="campo">
+      <label for="titulo">Título</label>
+      <input id="titulo" type="text" formControlName="titulo" placeholder="Ej. Crear componentes Angular">
+      <small class="error" *ngIf="form.get('titulo')?.touched && form.get('titulo')?.invalid">
+        El título es obligatorio (mínimo 2 caracteres).
+      </small>
+    </div>
+
+    <div class="campo">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion" rows="3" placeholder="Detalle de la tarea"></textarea>
+      <small class="error" *ngIf="form.get('descripcion')?.touched && form.get('descripcion')?.invalid">
+        La descripción es obligatoria.
+      </small>
+    </div>
+
+    <div class="fila">
+      <div class="campo">
+        <label for="prioridad">Prioridad</label>
+        <select id="prioridad" formControlName="prioridad">
+          <option *ngFor="let p of prioridades" [value]="p">{{ p }}</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="estado">Estado</label>
+        <select id="estado" formControlName="estado">
+          <option *ngFor="let e of estados" [value]="e">{{ e }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label for="fechaLimite">Fecha límite</label>
+      <input id="fechaLimite" type="date" formControlName="fechaLimite">
+      <small class="error" *ngIf="form.get('fechaLimite')?.touched && form.get('fechaLimite')?.invalid">
+        Selecciona una fecha límite.
+      </small>
+    </div>
+
+    <div class="acciones-form">
+      <button type="button" class="btn btn-secundario" (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="btn btn-primario">{{ esEdicion ? 'Guardar cambios' : 'Crear tarea' }}</button>
+    </div>
+  </form>
+</div>

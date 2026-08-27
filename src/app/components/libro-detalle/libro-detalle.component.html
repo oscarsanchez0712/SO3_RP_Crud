@@ -1,0 +1,36 @@
+<div class="contenedor" *ngIf="libro; else noEncontrado">
+  <a routerLink="/libros" class="volver">← Volver al catálogo</a>
+
+  <div class="tarjeta-detalle">
+    <div class="cabecera-detalle">
+      <span class="icono-libro">📖</span>
+      <div>
+        <h1>{{ libro.titulo }}</h1>
+        <p class="autor">de {{ libro.autor }}</p>
+      </div>
+    </div>
+
+    <dl class="datos">
+      <dt>Género</dt><dd>{{ libro.genero }}</dd>
+      <dt>Año de publicación</dt><dd>{{ libro.anio }}</dd>
+      <dt>Disponibilidad</dt>
+      <dd>
+        <span class="badge" [class.badge-ok]="libro.disponible" [class.badge-no]="!libro.disponible">
+          {{ libro.disponible ? 'Disponible' : 'No disponible' }}
+        </span>
+      </dd>
+    </dl>
+
+    <div class="acciones-detalle">
+      <a [routerLink]="['/libros/editar', libro.id]" class="btn btn-editar">✏️ Editar</a>
+      <button class="btn btn-eliminar" (click)="eliminar()">🗑️ Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noEncontrado>
+  <div class="contenedor">
+    <p class="vacio-msg">Libro no encontrado.</p>
+    <a routerLink="/libros" class="volver">← Volver al catálogo</a>
+  </div>
+</ng-template>

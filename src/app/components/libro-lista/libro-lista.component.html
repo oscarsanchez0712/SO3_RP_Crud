@@ -1,0 +1,43 @@
+<div class="contenedor">
+  <div class="encabezado">
+    <h1>📚 Catálogo de Libros</h1>
+    <a routerLink="/libros/nuevo" class="btn btn-primario">+ Nuevo libro</a>
+  </div>
+
+  <div class="tabla-wrap" *ngIf="libros().length > 0; else vacio">
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Género</th>
+          <th>Año</th>
+          <th>Disponible</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let libro of libros()">
+          <td class="col-titulo">{{ libro.titulo }}</td>
+          <td>{{ libro.autor }}</td>
+          <td>{{ libro.genero }}</td>
+          <td>{{ libro.anio }}</td>
+          <td>
+            <span class="badge" [class.badge-ok]="libro.disponible" [class.badge-no]="!libro.disponible">
+              {{ libro.disponible ? 'Sí' : 'No' }}
+            </span>
+          </td>
+          <td class="acciones">
+            <a [routerLink]="['/libros', libro.id]" class="btn btn-ver" title="Ver">👁</a>
+            <a [routerLink]="['/libros/editar', libro.id]" class="btn btn-editar" title="Editar">✏️</a>
+            <button class="btn btn-eliminar" title="Eliminar" (click)="eliminar(libro.id, libro.titulo)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #vacio>
+    <p class="vacio-msg">No hay libros registrados todavía.</p>
+  </ng-template>
+</div>

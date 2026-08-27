@@ -1,0 +1,32 @@
+.contenedor { max-width: 620px; margin: 2rem auto; padding: 0 1.5rem; }
+
+.volver { display: inline-block; margin-bottom: 1rem; color: #2ba84a; text-decoration: none; font-weight: 600; }
+.volver:hover { text-decoration: underline; }
+
+.tarjeta-detalle { background: #fff; border-radius: 14px; padding: 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+
+.cabecera-detalle { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.icono-tarea { font-size: 2.6rem; }
+.cabecera-detalle h1 { color: #1f6d33; margin: 0; font-size: 1.5rem; }
+.fecha { color: #777; margin: 0.2rem 0 0; font-size: 0.9rem; }
+
+.descripcion { color: #444; margin-bottom: 1.5rem; line-height: 1.5; }
+
+.datos { display: grid; grid-template-columns: max-content 1fr; gap: 0.6rem 1.2rem; margin-bottom: 1.8rem; align-items: center; }
+.datos dt { color: #888; font-size: 0.85rem; text-transform: uppercase; }
+.datos dd { margin: 0; }
+
+.badge { padding: 0.25rem 0.7rem; border-radius: 20px; font-size: 0.82rem; font-weight: 600; }
+.prioridad-alta { background: #fde3e3; color: #c0392b; }
+.prioridad-media { background: #fff3cd; color: #8a6d1f; }
+.prioridad-baja { background: #e3f2fd; color: #1c5a8a; }
+.estado-pendiente { background: #eee; color: #555; }
+.estado-en-proceso { background: #fff3cd; color: #8a6d1f; }
+.estado-completada { background: #dff6e3; color: #1f8a3d; }
+
+.acciones-detalle { display: flex; gap: 0.8rem; }
+.btn { border: none; border-radius: 8px; padding: 0.6rem 1.1rem; font-weight: 600; cursor: pointer; text-decoration: none; }
+.btn-editar { background: #fff3cd; color: #333; }
+.btn-eliminar { background: #fde3e3; color: #c0392b; }
+
+.vacio-msg { text-align: center; color: #888; padding: 2rem 0; }

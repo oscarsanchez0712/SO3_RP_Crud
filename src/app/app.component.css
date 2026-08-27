@@ -1,0 +1,12 @@
+main {
+  min-height: calc(100vh - 130px);
+}
+
+.pie {
+  text-align: center;
+  padding: 1.2rem;
+  color: #888;
+  font-size: 0.85rem;
+  border-top: 1px solid #eee;
+  margin-top: 2rem;
+}

@@ -1,0 +1,45 @@
+<div class="contenedor">
+  <div class="encabezado">
+    <h1>✅ Lista de Tareas</h1>
+    <a routerLink="/tareas/nueva" class="btn btn-primario">+ Nueva tarea</a>
+  </div>
+
+  <div class="tabla-wrap" *ngIf="tareas().length > 0; else vacio">
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Prioridad</th>
+          <th>Estado</th>
+          <th>Fecha límite</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tarea of tareas()">
+          <td class="col-titulo">{{ tarea.titulo }}</td>
+          <td>
+            <span class="badge prioridad" [ngClass]="'prioridad-' + tarea.prioridad.toLowerCase()">
+              {{ tarea.prioridad }}
+            </span>
+          </td>
+          <td>
+            <span class="badge estado" [ngClass]="'estado-' + tarea.estado.toLowerCase().replace(' ', '-')">
+              {{ tarea.estado }}
+            </span>
+          </td>
+          <td>{{ tarea.fechaLimite }}</td>
+          <td class="acciones">
+            <a [routerLink]="['/tareas', tarea.id]" class="btn btn-ver" title="Ver">👁</a>
+            <a [routerLink]="['/tareas/editar', tarea.id]" class="btn btn-editar" title="Editar">✏️</a>
+            <button class="btn btn-eliminar" title="Eliminar" (click)="eliminar(tarea.id, tarea.titulo)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #vacio>
+    <p class="vacio-msg">No hay tareas registradas todavía.</p>
+  </ng-template>
+</div>

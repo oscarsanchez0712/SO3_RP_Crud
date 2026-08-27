@@ -1,0 +1,51 @@
+<div class="contenedor">
+  <h1>{{ esEdicion ? '✏️ Editar libro' : '➕ Nuevo libro' }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="formulario">
+    <div class="campo">
+      <label for="titulo">Título</label>
+      <input id="titulo" type="text" formControlName="titulo" placeholder="Ej. Cien años de soledad">
+      <small class="error" *ngIf="form.get('titulo')?.touched && form.get('titulo')?.invalid">
+        El título es obligatorio (mínimo 2 caracteres).
+      </small>
+    </div>
+
+    <div class="campo">
+      <label for="autor">Autor</label>
+      <input id="autor" type="text" formControlName="autor" placeholder="Ej. Gabriel García Márquez">
+      <small class="error" *ngIf="form.get('autor')?.touched && form.get('autor')?.invalid">
+        El autor es obligatorio (mínimo 2 caracteres).
+      </small>
+    </div>
+
+    <div class="fila">
+      <div class="campo">
+        <label for="genero">Género</label>
+        <input id="genero" type="text" formControlName="genero" placeholder="Ej. Novela">
+        <small class="error" *ngIf="form.get('genero')?.touched && form.get('genero')?.invalid">
+          El género es obligatorio.
+        </small>
+      </div>
+
+      <div class="campo">
+        <label for="anio">Año de publicación</label>
+        <input id="anio" type="number" formControlName="anio" placeholder="Ej. 1967">
+        <small class="error" *ngIf="form.get('anio')?.touched && form.get('anio')?.invalid">
+          Ingresa un año válido.
+        </small>
+      </div>
+    </div>
+
+    <div class="campo campo-check">
+      <label>
+        <input type="checkbox" formControlName="disponible">
+        Disponible para préstamo
+      </label>
+    </div>
+
+    <div class="acciones-form">
+      <button type="button" class="btn btn-secundario" (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="btn btn-primario">{{ esEdicion ? 'Guardar cambios' : 'Crear libro' }}</button>
+    </div>
+  </form>
+</div>
